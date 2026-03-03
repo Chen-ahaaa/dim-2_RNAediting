@@ -1,4 +1,3 @@
-# all path variables need to be appended with '/' at the end
 # arg1=$1
 
 # the vcf_file, ensure that the two parents are located in the column 10 and 11
@@ -131,7 +130,7 @@ if  [ ${is_cross} == 0 ];then
     
     for f in ${workdir}${cross}.snp.*_RC.vcf.filter.csv; do
       name=$(basename "$f" | cut -d'.' -f3)
-      # ȥ��ĩβ�� "_RC"
+      # È¥µôÄ©Î²µÄ "_RC"
       name=${name%_RC}
       echo -e "${f}\t${name}"
     done > ${workdir}${cross}.snp.RC.filter.list
