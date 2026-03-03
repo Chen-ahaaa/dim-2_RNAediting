@@ -59,19 +59,17 @@ def merge_vs_groups(input_dir, output_dir, sep="\t"):
 def merge_by_sample_key(input_dir, output_dir, sep="\t"):
     os.makedirs(output_dir, exist_ok=True)
 
-    # 找出所有 *_merged.txt 文件
+    # find all *_merged.txt files
     all_files = glob.glob(os.path.join(input_dir, "*_merged.edsite_ann.csv"))
     if not all_files:
         print("No *_merged.edsite_ann.csv files found.")
         return
 
-    # 按文件名中 _merged.txt 前的 sample key 分组
+    # groupby *_merged.txt 
     prefix_groups = defaultdict(list)
     for f in all_files:
         fname = os.path.basename(f)
-        # 去掉 _merged.txt
         base = fname.rsplit("_merged.edsite_ann.csv", 1)[0]
-        # 取 _ 后的部分（去掉最前面的 like 'sense_'）
         if "_" in base:
             key = "_".join(base.split("_")[1:])  # '6dpf_as_1'
         else:
