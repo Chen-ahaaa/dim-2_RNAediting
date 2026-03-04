@@ -1,12 +1,8 @@
-# arg1=$1
-
 # the vcf_file, ensure that the two parents are located in the column 10 and 11
 vcf_file="/mnt/ibm4/cxn/RNAediting/mutation/filter_snp/vcf_file/groupHC-dim2TAAA4_dim2TAAa6-20220902.vcf"
 
 # work directory
 workdir=/mnt/ibm4/cxn/RNAediting/mutation/filter_snp/dim2TAA/
-# ibm4workdir=/home/cxn/Data/RNAediting/mutation/filter_snp/dim2TAA/
-
 
 # BAM files were used to obtain accurate read counts at each position.
 bam_dir=/mnt/san3/usr/cxn/bam/dim2TAA-BB/
