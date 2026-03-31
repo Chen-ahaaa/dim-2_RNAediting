@@ -112,38 +112,6 @@ python /mnt/ibm4/cxn/RNAediting/mutation/filter_snp/fill_vcf_by_RC.py \
 
 #######################################################################################################
 #######################################################################################################
-# for single spore
-if  [ ${is_cross} == 0 ];then
-    for f in ${workdir}${cross}.snp.*_RC.vcf;do
-      #${workdir}${cross}.snp.MQ20AR_RC.vcf.filter.csv
-      python /mnt/ibm4/cxn/RNAediting/mutation/filter_snp/filter_spore_mut_v8.py \
-          --vcf  ${f} \
-          --outpath ${workdir} \
-          --case case1 \
-          --min_mut_ratio 0.3 --max_parent_mut_ratio 0.2 --max_parent_mut_reads 5 --min_sup_reads 5  --min_sup_strand_reads 2 \
-          --cross 0 
-    done
-    
-    for f in ${workdir}${cross}.snp.*_RC.vcf.filter.csv; do
-      name=$(basename "$f" | cut -d'.' -f3)
-      # È¥µôÄ©Î²µÄ "_RC"
-      name=${name%_RC}
-      echo -e "${f}\t${name}"
-    done > ${workdir}${cross}.snp.RC.filter.list
-    
-    python /mnt/ibm4/cxn/RNAediting/mutation/filter_snp/merge_RCsource.py \
-        --list ${workdir}${cross}.snp.RC.filter.list \
-        --outfile ${workdir}${cross}.snp.merge_RC.vcf.filter.csv
-        
-    mkdir -p ${workdir}igv
-    
-    python /mnt/ibm4/cxn/RNAediting/mutation/filter_snp/mut_snapshot.py \
-        --mutcsv ${workdir}${cross}.snp.merge_RC.vcf.filter.csv \
-        --outpath ${workdir}igv/ \
-        --bampath "/mnt/ibm4/cxn/RNAediting/mutation/filter_snp/bam_path.csv" \
-        --cross 0 
-        
-        
 # can add filtering condition: remove SNPs near indels
 ############################################    
 # for cross
