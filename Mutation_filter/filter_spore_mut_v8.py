@@ -211,13 +211,13 @@ def is_hom_by_alleles(alleles, AD_field, min_hom_ratio=0.9):
 
 def segregation_like_set(p1_alleles, p2_alleles, child_alleles,
                          p1_ad, p2_ad, child_ad, min_ratio=0.3):
-"""
-Determine whether a mutation is a "heterozygous segregation type":
-  1. One parent is heterozygous (allele frequency ≥ 0.3, 0.3) and the other is homozygous;
-     the offspring is homozygous and differs from the homozygous parent;
-     the offspring allele corresponds to the other allele of the heterozygous parent.
-  2. Both parents are heterozygous (allele frequency ≥ 0.3, 0.3), and the offspring is homozygous.
-"""
+    """
+    Determine whether a mutation is a "heterozygous segregation type":
+      1. One parent is heterozygous (allele frequency ≥ 0.3, 0.3) and the other is homozygous;
+         the offspring is homozygous and differs from the homozygous parent;
+         the offspring allele corresponds to the other allele of the heterozygous parent.
+      2. Both parents are heterozygous (allele frequency ≥ 0.3, 0.3), and the offspring is homozygous.
+    """
 
     p1_is_het = is_het_by_ad(p1_alleles, p1_ad, min_ratio)
     p2_is_het = is_het_by_ad(p2_alleles, p2_ad, min_ratio)
