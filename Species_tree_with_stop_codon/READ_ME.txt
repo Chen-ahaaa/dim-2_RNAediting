@@ -1,7 +1,10 @@
-1. extract ortholog list (othodb) for dim2 Sordialles from NCBI -> fasta.txt (https://www.orthodb.org/?ncbi=3876054)
-2. parse using dim2.py to extract non-redundant species, check for sequence completeness, find stop -> Dim2_species.txt (species list) and specie_stop.csv, dim2_unaligned.
-3. With the species list get the NCBI taxonomy (using common tree) https://www.ncbi.nlm.nih.gov/Taxonomy/CommonTree/wwwcmt.cgi
-4. Export to phylip -> phyliptree.phy
-5. use NCBI treeviewer to convert to newick format
-6. use modify_newick.py to modify file to add in stop codon ->tree_with_stp.nwk
-7. Open with TreeView (https://treeviewer.ord
+1. Retrieve DIM-2 homologous CDS sequences.
+- Download DIM-2 orthologous CDS sequences for Sordariales primarily from OrthoDB.
+- Supplement the dataset with additional Sordariales species from JGI, identifying DIM-2 homologs through BLAST searches against their genome sequences.
+- Combine the CDS sequences obtained from OrthoDB and JGI into a single FASTA file (fasta.txt).
+2. Filter and characterize DIM-2 homologous CDS sequences.
+- Use dim2.py to retain one representative sequence per species, assess sequence completeness, and identify stop codon types and positions.
+- Generate three output files:
+  - Dim2_species.txt: List of non-redundant species.
+  - specie_stop.csv: Stop codon information for each species.
+  - dim2_unaligned: Filtered, non-redundant DIM-2 CDS sequences in FASTA format.
